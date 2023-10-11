@@ -3,7 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrainGenerator", "TerrainGenerator\TerrainGenerator.csproj", "{7F1CB136-100C-4CC8-8DDD-662D5844DED9}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{31F5F363-D733-4C11-92E1-9BEB8CA50CDE}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{A93A30A5-7D4A-465F-A477-3DD56186767A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{07B8BD1B-1ABF-4BC8-954F-6D26FC714B50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DefaultGeneration", "Samples\DefaultGeneration\DefaultGeneration.csproj", "{107698C8-7E73-4DA3-B7AE-C4BB58F7F99A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TerrainGenerator", "Core\TerrainGenerator\TerrainGenerator.csproj", "{0D9088E9-C5C5-4D9B-9C76-36B984CEC3EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,13 +22,21 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7F1CB136-100C-4CC8-8DDD-662D5844DED9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7F1CB136-100C-4CC8-8DDD-662D5844DED9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7F1CB136-100C-4CC8-8DDD-662D5844DED9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7F1CB136-100C-4CC8-8DDD-662D5844DED9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{107698C8-7E73-4DA3-B7AE-C4BB58F7F99A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{107698C8-7E73-4DA3-B7AE-C4BB58F7F99A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{107698C8-7E73-4DA3-B7AE-C4BB58F7F99A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{107698C8-7E73-4DA3-B7AE-C4BB58F7F99A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D9088E9-C5C5-4D9B-9C76-36B984CEC3EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D9088E9-C5C5-4D9B-9C76-36B984CEC3EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D9088E9-C5C5-4D9B-9C76-36B984CEC3EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D9088E9-C5C5-4D9B-9C76-36B984CEC3EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{107698C8-7E73-4DA3-B7AE-C4BB58F7F99A} = {07B8BD1B-1ABF-4BC8-954F-6D26FC714B50}
+		{0D9088E9-C5C5-4D9B-9C76-36B984CEC3EE} = {A93A30A5-7D4A-465F-A477-3DD56186767A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F321C7F6-2C2B-4F53-A590-952B7C6C56E0}

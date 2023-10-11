@@ -6,4 +6,4 @@ At the moment due to the limit of underlying library we suffer from non-linear u
 
 v0.1 (20231003): Originally an experimentation with Blender PythonNet for mesh output;  
 v0.2 (20231010): Added bitmap drawing output support so we can see result outside Blender environment;  
-v0.3 (20231011): (Not available here) Made Generation into Fluent so we can easily REPL use it. Moved into proper Visual Studio C# project.
+v0.3 (20231011): Made Generation into Fluent so we can easily REPL use it. Moved into proper Visual Studio C# project.
