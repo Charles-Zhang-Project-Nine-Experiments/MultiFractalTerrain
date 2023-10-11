@@ -16,8 +16,29 @@ namespace TerrainGenerator
     public record Vector(double X, double Y, double Z);
     public record Edge(int V1, int V2);
     public record Face(int V1, int V2, int V3);
-    public record Generation(string ObjectName, string MeshName, Resolution Resolution, Vector[] Vertices, Edge[] Edges, Face[] Faces)
+    #endregion
+
+    #region Generator
+    public sealed class TerrainGenerator
     {
+        #region Construciton
+        public TerrainGenerator(Resolution resolution, Vector[] vertices, Edge[] edges, Face[] faces)
+        {
+            Resolution = resolution;
+            Vertices = vertices;
+            Edges = edges;
+            Faces = faces;
+        }
+        #endregion
+
+        #region Properties
+        public Resolution Resolution { get; set; }
+        public Vector[] Vertices { get; set; }
+        public Edge[] Edges { get; set; }
+        public Face[] Faces { get; set; }
+        #endregion
+
+        #region Accessor Properties
         public double HeightRange
             => MaxHeight - MinHeight;
         public double MaxHeight
@@ -26,18 +47,10 @@ namespace TerrainGenerator
             => Vertices.Min(v => v.Z);
         public Vector GetVertex(int row, int col)
             => Vertices[row * Resolution.Columns + col];
-    }
-    #endregion
-
-    #region Generator
-    public sealed class TerrainGenerator
-    {
-        #region Construciton
-
         #endregion
 
         #region Method
-        public Generation Generate()
+        public TerrainGenerator Generate()
         {
             Resolution resolution = new Resolution(350, 450);
             Vector[][] terrain = GenerateTerrain(resolution);
@@ -59,7 +72,7 @@ namespace TerrainGenerator
                 faces[i * 2 + 1] = new Face(1 + totalOffset, resolution.Columns + 1 + totalOffset, resolution.Columns + totalOffset);
             }
 
-            return new Generation("Terrain", "Terrain", resolution, vertices, Array.Empty<Edge>(), faces);
+            return new TerrainGenerator(resolution, vertices, Array.Empty<Edge>(), faces);
         }
         #endregion
 
@@ -138,11 +151,11 @@ namespace TerrainGenerator
                 noise,
                 resolution,
                 new (float Frequency, double MaxHeight)[] {
-            (0.001f, 30.0),
-            (0.005f, 30.0),
-            (0.01f, 20.0),
-            (0.07f, 0.8),
-            (0.2f, 0.5),
+                    (0.001f, 30.0),
+                    (0.005f, 30.0),
+                    (0.01f, 20.0),
+                    (0.07f, 0.8),
+                    (0.2f, 0.5),
                 }
             );
 
@@ -150,10 +163,10 @@ namespace TerrainGenerator
                 noise,
                 resolution,
                 new (float Frequency, double MaxHeight)[] {
-            (0.001f, 30.0),
-            (0.005f, 30.0),
-            (0.01f, 20.0),
-            (0.07f, 0.8)
+                    (0.001f, 30.0),
+                    (0.005f, 30.0),
+                    (0.01f, 20.0),
+                    (0.07f, 0.8)
                 }
             );
 
@@ -164,7 +177,7 @@ namespace TerrainGenerator
         #endregion
 
         #region Bitmap Rendering
-        public void RenderHeightMap(Generation generation, string filePath, RenderConfiguration configurations)
+        public void RenderHeightMap(TerrainGenerator generation, string filePath, RenderConfiguration configurations)
         {
             double heightRange = generation.HeightRange;
             double minHeight = generation.MinHeight;
@@ -183,7 +196,7 @@ namespace TerrainGenerator
             }
             bmp.Save(Path.GetFullPath(filePath));
         }
-        public void RenderContour(Generation generation, string filePath, RenderConfiguration configurations)
+        public void RenderContour(TerrainGenerator generation, string filePath, RenderConfiguration configurations)
         {
             double heightRange = generation.HeightRange;
             double minHeight = generation.MinHeight;
@@ -223,7 +236,7 @@ namespace TerrainGenerator
                 );
             }
         }
-        public void Render(Generation generation, string filePath, RenderType renderType, RenderConfiguration configurations)
+        public void Render(TerrainGenerator generation, string filePath, RenderType renderType, RenderConfiguration configurations)
         {
             switch (renderType)
             {
