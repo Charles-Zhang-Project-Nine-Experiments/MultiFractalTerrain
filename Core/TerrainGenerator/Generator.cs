@@ -239,7 +239,7 @@ namespace TerrainGenerator
             double contourSpan = heightRange / configurations.ContourLineDensity;
 
             Bitmap bmp = new(generation.Resolution.Columns, generation.Resolution.Rows);
-            Parallel.For(0, generation.Resolution.Rows, row =>
+            for (int row = 0; row < generation.Resolution.Rows; row++)
             {
                 for (int col = 0; col < generation.Resolution.Columns; col++)
                 {
@@ -250,7 +250,7 @@ namespace TerrainGenerator
                     else
                         bmp.SetPixel(col, row, Color.FromArgb(224, 222, 222));
                 }
-            });
+            }
             bmp.Save(Path.GetFullPath(filePath));
         }
         public static void RenderHeightMap(Generator generation, string filePath, RenderConfiguration configurations)
@@ -260,7 +260,7 @@ namespace TerrainGenerator
             double seaLevel = configurations.SeaLevelRatio * heightRange + minHeight;
 
             Bitmap bmp = new(generation.Resolution.Columns, generation.Resolution.Rows);
-            Parallel.For(0, generation.Resolution.Rows, row =>
+            for (int row = 0; row < generation.Resolution.Rows; row++)
             {
                 for (int col = 0; col < generation.Resolution.Columns; col++)
                 {
@@ -275,7 +275,7 @@ namespace TerrainGenerator
                         bmp.SetPixel(col, row, color);
                     }
                 }
-            });
+            }
             bmp.Save(Path.GetFullPath(filePath));
         }
         public static void RenderRelief(Generator generation, string filePath, RenderConfiguration configurations)
@@ -294,7 +294,7 @@ namespace TerrainGenerator
             double seaRange = seaLevel - minHeight;
 
             Bitmap bmp = new(generation.Resolution.Columns, generation.Resolution.Rows);
-            Parallel.For(0, generation.Resolution.Rows, row =>
+            for (int row = 0; row < generation.Resolution.Rows; row++)
             {
                 for (int col = 0; col < generation.Resolution.Columns; col++)
                 {
@@ -306,7 +306,7 @@ namespace TerrainGenerator
                     else if (height < seaLevel)
                         bmp.SetPixel(col, row, Interpolate(lightSeaColor, darkSeaColor, (seaLevel - height) / seaRange)); // Sea
                 }
-            });
+            }
             bmp.Save(Path.GetFullPath(filePath));
         }
         public static Color Interpolate(Color color1, Color color2, double ratio)
